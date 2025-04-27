@@ -1,0 +1,15 @@
+read:
+  format: parquet
+  path: data/staging/transactions_cleaned/
+  options:
+    mergeSchema: true
+
+write:
+  format: parquet
+  path: data/curated/daily_account_amounts/
+  mode: overwrite
+  partitionBy: ["transaction_date"]
+  schema:
+    - account_id
+    - transaction_date
+    - daily_amount

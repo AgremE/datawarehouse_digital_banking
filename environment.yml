@@ -1,0 +1,12 @@
+name: my_dw_env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pyspark
+  - pyyaml
+  - pytest
+  - pip
+  - pip:
+    - apache-airflow
+    - apache-airflow-providers-apache-spark

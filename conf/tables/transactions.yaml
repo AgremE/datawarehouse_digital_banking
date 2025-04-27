@@ -1,0 +1,32 @@
+read:
+  format: parquet
+  path: data/raw/transactions/
+  options:
+    mergeSchema: true
+  schema:
+    transaction_id: string
+    account_id: string
+    transaction_date:
+      type: timestamp
+      format: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+    amount:
+      type: decimal
+      precision: 10
+      scale: 2
+    transaction_type: string
+    merchant: string
+    category: string
+
+write:
+  format: parquet
+  path: data/staging/transactions_cleaned/
+  mode: overwrite
+  partitionBy: ["transaction_date"]
+  schema:
+    - transaction_id
+    - account_id
+    - transaction_date
+    - amount
+    - transaction_type
+    - merchant
+    - category
